@@ -1,0 +1,18 @@
+<?php
+
+/**
+ * @file
+ * Contains \Drupal\iknowfi_mobile_first\iknowfi_mobile_first.module
+ */
+
+/**
+ * Implements hook_page_attachments().
+ *
+ * This ensures our library (iframe_resizer) is attached on every page 
+ * or you can add conditions if you only want it on certain routes.
+ */
+function iknowfi_mobile_first_page_attachments(array &$attachments) {
+  // Attach our custom library site-wide (remove conditions if always needed).
+  $attachments['#attached']['library'][] = 'iknowfi_mobile_first/iknowfi_mobile_first';
+  $attachments['#attached']['library'][] = 'iknowfi_mobile_first/iknowfi_mobile_first_css';
+}

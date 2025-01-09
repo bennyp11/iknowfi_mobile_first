@@ -1,0 +1,5 @@
+name: iKnowFi Mobile First
+type: module
+description: "A Mobile Forward App Redesign."
+core_version_requirement: ^9 || ^10
+package: Custom

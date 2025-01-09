@@ -1,0 +1,67 @@
+/**
+ * Fades at top and bottom of .h5p-column-content
+ * (which has default 40px top/bottom padding).
+ */
+/***
+.h5p-column-content {
+  position: relative;
+  background-color: #fff;
+  padding-top: 0 !important;
+  padding-right: 40px !important;
+  padding-left: 40px !important;
+}
+
+.h5p-column-content::before,
+.h5p-column-content::after {
+  content: "";
+  position: absolute;
+  left: 0;    
+  right: 0;   
+  height: 80px;       
+  z-index: 9999;      
+  pointer-events: none;
+}
+
+.h5p-column-content::before {
+  top: 0;
+background: linear-gradient(to bottom, #ffffff 0%, #ffffff75, #ffffff00, #ffffff00, #ffffff00);
+}
+
+.h5p-column-content::after {
+  bottom: 0;
+background: linear-gradient(to top, #ffffff 0%, #ffffff75, #ffffff00, #ffffff00, #ffffff00);
+}
+
+.h5p-column-content-iframe-parent {
+  padding: 40px;
+}
+
+.h5p-column-content-iframe-parent .h5p-column-content { padding: 0 !important; }
+**/
+
+@media (max-width: 768px) {
+   div.content-box.lp_progress_wrapper {  margin-top: 2.25rem !important; margin-bottom: 0 !important; }
+   .page-opigno-module-group-answer-form .back-btn a { display: none !important; }
+   .dialog-off-canvas-main-canvas header.page-header { padding: .625rem 0 .625rem !important; }
+   header.page-header .col-left, header.page-header .col-right {
+        padding-left: .275rem !important;
+        padding-right: .275rem !important;
+    }
+   div.content-box.lp_progress_wrapper { background-color: #f5f5f5 !important; }
+  .h5p-column-content.h5p-advanced-text { padding: .675rem 0px 0px !important;}
+  .mobile-menu-btn { margin-top: 1.1rem !important; }
+  .block-system-branding-block { margin-right: .275rem !important; }
+  .dialog-off-canvas-main-canvas .page-main>.container {padding-top: unset !important;}
+  .opigno_activity__wrapper { padding: 0px !important; }
+  .opigno_activity { padding: 0 !important; border: none !important; }
+  .content-box { padding: .75rem .75rem !important; box-shadow: none !important; border: none !important; }
+   div.h5p-content ul.h5p-actions { display: none !important; }
+  .h5p-interactive-book-status-chapter h1.title {font-size: 12px !important; padding: 0 0 !important;}
+  .h5p-content { border: none !important;}
+  .module-title-wrapper .fullscreen-link { display: none !important; }
+  .h5p-interactive-book-status-fullscreen { display: none !important; }
+  .h5p-interactive-book-status-menu .icon-menu { color: #002d72 !important; }
+  .h5p-interactive-book-status-progress-number { color: #002d72 !important; }
+  .h5p-interactive-book-status-arrow .navigation-button { color: #002d72 !important; }
+}
+

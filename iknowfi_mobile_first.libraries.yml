@@ -1,0 +1,13 @@
+iknowfi_mobile_first:
+  version: 1.x
+  js:
+    # 2) Then include our custom script
+    js/iknowfi_mobile_first.js: {}
+  dependencies:
+    - core/jquery
+
+iknowfi_mobile_first_css:
+  version: 1.x
+  css:
+    theme:
+      css/iknowfi_mobile_first.css: {}
