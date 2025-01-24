@@ -12,7 +12,35 @@
  * or you can add conditions if you only want it on certain routes.
  */
 function iknowfi_mobile_first_page_attachments(array &$attachments) {
-  // Attach our custom library site-wide (remove conditions if always needed).
+  // Log that we are attempting to attach libraries.
+  \Drupal::logger('iknowfi_mobile_first')->info('Attempting to attach iKnowFi mobile libraries for the current page load.');
+
+  // Always attach the JS library site-wide.
   $attachments['#attached']['library'][] = 'iknowfi_mobile_first/iknowfi_mobile_first';
-  $attachments['#attached']['library'][] = 'iknowfi_mobile_first/iknowfi_mobile_first_css';
+
+  // Get the current path and user status.
+  $current_path = \Drupal::service('path.current')->getPath();
+  $route_name = \Drupal::routeMatch()->getRouteName();
+  $is_front_page = \Drupal::service('path.matcher')->isFrontPage();
+  $current_user = \Drupal::currentUser();
+  $is_logged_in = $current_user->isAuthenticated();
+
+  // Only attach the CSS library if:
+  // 1. It's the front page and the user is logged in,
+  // 2. OR the route starts with '/group/*'.
+  if (($is_front_page && $is_logged_in) || strpos($current_path, '/group/') === 0) {
+    \Drupal::logger('iknowfi_mobile_first')->info(
+      'Attaching CSS because conditions met: Front page (@front), Logged in (@logged), or /group/* route (@path)',
+      [
+        '@front' => $is_front_page ? 'Yes' : 'No',
+        '@logged' => $is_logged_in ? 'Yes' : 'No',
+        '@path' => $current_path,
+      ]
+    );
+    $attachments['#attached']['library'][] = 'iknowfi_mobile_first/iknowfi_mobile_first_front_css';
+  } elseif ($route_name === 'opigno_learning_path.training_by_user' || $route_name === 'opigno_learning_path.training') {
+    // Do not attach CSS for specific Opigno routes.
+    $attachments['#attached']['library'][] = 'iknowfi_mobile_first/iknowfi_mobile_first_css';
+    return;
+  }
 }

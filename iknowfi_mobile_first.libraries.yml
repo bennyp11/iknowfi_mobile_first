@@ -11,3 +11,9 @@ iknowfi_mobile_first_css:
   css:
     theme:
       css/iknowfi_mobile_first.css: {}
+
+iknowfi_mobile_first_front_css:
+  version: 1.x
+  css:
+    theme:
+      css/iknowfi_mobile_first_front.css: {}
